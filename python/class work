@@ -1,0 +1,54 @@
+def accept_student_details():
+    """Accepts and returns the student name and marks."""
+    name = input("Enter Student Name: ")
+    while True:
+        try:
+            marks = float(input("Enter Marks: "))
+            if 0 <= marks <= 100:
+                return name, marks
+            print("Please enter valid marks between 0 and 100.")
+        except ValueError:
+            print("Invalid input. Please enter a number for marks.")
+
+def calculate_grade(marks):
+    """Calculates the grade based on marks."""
+    if marks >= 90:
+        return "A"
+    elif marks >= 75:
+        return "B"
+    elif marks >= 50:
+        return "C"
+    else:
+        return "Fail"
+
+def check_pass_fail(grade):
+    """Checks if the student passed or failed based on the grade."""
+    if grade == "Fail":
+        return "Fail"
+    return "Pass"
+
+def display_student_report(name, marks, grade, result):
+    """Displays the final formatted student report."""
+    print("\n--- Student Report ---")
+    print(f"Student Name: {name}")
+    print(f"Marks: {marks}")
+    print(f"Grade: {grade}")
+    print(f"Result: {result}")
+
+def main():
+    """Main function to run the student management system."""
+    # 1. Accept student details
+    name, marks = accept_student_details()
+    
+    # 2. Calculate the grade
+    grade = calculate_grade(marks)
+    
+    # 3. Check pass/fail status
+    result = check_pass_fail(grade)
+    
+    # 4. Display the results
+    display_student_report(name, marks, grade, result)
+
+# Run the program
+if __name__ == "__main__":
+    main()
